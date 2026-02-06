@@ -47,7 +47,7 @@ export const loadBackgroundMusic = async () => {
     backgroundMusic = sound;
     return sound;
   } catch (e) {
-    console.log('Music loading error:', e);
+    if (__DEV__) console.log('Music loading error:', e);
     return null;
   }
 };
@@ -59,7 +59,7 @@ export const playBackgroundMusic = async () => {
       await backgroundMusic.playAsync();
     }
   } catch (e) {
-    console.log('Music play error:', e);
+    if (__DEV__) console.log('Music play error:', e);
   }
 };
 
@@ -69,7 +69,7 @@ export const pauseBackgroundMusic = async () => {
       await backgroundMusic.pauseAsync();
     }
   } catch (e) {
-    console.log('Music pause error:', e);
+    if (__DEV__) console.log('Music pause error:', e);
   }
 };
 
@@ -79,7 +79,7 @@ export const setMusicVolume = async (volume) => {
       await backgroundMusic.setVolumeAsync(volume);
     }
   } catch (e) {
-    console.log('Volume error:', e);
+    if (__DEV__) console.log('Volume error:', e);
   }
 };
 
@@ -91,7 +91,7 @@ export const stopBackgroundMusic = async () => {
       backgroundMusic = null;
     }
   } catch (e) {
-    console.log('Music stop error:', e);
+    if (__DEV__) console.log('Music stop error:', e);
   }
 };
 
@@ -109,7 +109,7 @@ export const playCelebrationSound = async () => {
       }
     });
   } catch (e) {
-    console.log('Celebration sound error:', e);
+    if (__DEV__) console.log('Celebration sound error:', e);
   }
 };
 
@@ -127,7 +127,7 @@ export const playCorrectSound = async () => {
       }
     });
   } catch (e) {
-    console.log('Correct sound error:', e);
+    if (__DEV__) console.log('Correct sound error:', e);
   }
 };
 
@@ -145,6 +145,6 @@ export const playWrongSound = async () => {
       }
     });
   } catch (e) {
-    console.log('Wrong sound error:', e);
+    if (__DEV__) console.log('Wrong sound error:', e);
   }
 };

@@ -29,7 +29,7 @@ const PREFERRED_VOICES_ANDROID = [
 export const initializeVoice = async () => {
   try {
     const voices = await Speech.getAvailableVoicesAsync();
-    console.log('Available voices:', voices.length);
+    if (__DEV__) console.log('Available voices:', voices.length);
 
     const preferredList = Platform.OS === 'ios'
       ? PREFERRED_VOICES_IOS
@@ -44,7 +44,7 @@ export const initializeVoice = async () => {
       );
       if (found) {
         selectedVoice = found.identifier;
-        console.log('Selected voice:', found.name || found.identifier);
+        if (__DEV__) console.log('Selected voice:', found.name || found.identifier);
         break;
       }
     }
@@ -57,11 +57,11 @@ export const initializeVoice = async () => {
       );
       if (englishVoice) {
         selectedVoice = englishVoice.identifier;
-        console.log('Selected enhanced English voice:', englishVoice.name);
+        if (__DEV__) console.log('Selected enhanced English voice:', englishVoice.name);
       }
     }
   } catch (e) {
-    console.log('Error getting voices:', e);
+    if (__DEV__) console.log('Error getting voices:', e);
   }
 };
 
@@ -103,7 +103,7 @@ const processQueue = async () => {
       Speech.speak(text, speechOptions);
     });
   } catch (e) {
-    console.log('Speech error:', e);
+    if (__DEV__) console.log('Speech error:', e);
   }
 
   isSpeaking = false;
@@ -157,7 +157,7 @@ export const speakNow = async (text, options = {}) => {
       Speech.speak(text, speechOptions);
     });
   } catch (e) {
-    console.log('Speech error:', e);
+    if (__DEV__) console.log('Speech error:', e);
   }
 };
 
@@ -167,7 +167,7 @@ export const stopSpeech = async () => {
   try {
     await Speech.stop();
   } catch (e) {
-    console.log('Stop speech error:', e);
+    if (__DEV__) console.log('Stop speech error:', e);
   }
 };
 

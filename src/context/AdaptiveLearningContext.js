@@ -97,7 +97,7 @@ export function AdaptiveLearningProvider({ children }) {
         }));
       }
     } catch (e) {
-      console.log('Error loading learning data:', e);
+      if (__DEV__) console.log('Error loading learning data:', e);
     } finally {
       setIsLoading(false);
     }
@@ -107,7 +107,7 @@ export function AdaptiveLearningProvider({ children }) {
     try {
       await AsyncStorage.setItem('adaptiveLearningData', JSON.stringify(data));
     } catch (e) {
-      console.log('Error saving learning data:', e);
+      if (__DEV__) console.log('Error saving learning data:', e);
     }
   };
 

@@ -30,7 +30,7 @@ export function GameProvider({ children }) {
       if (music !== null) setMusicEnabled(music === 'true');
       if (voice !== null) setVoiceEnabled(voice === 'true');
     } catch (e) {
-      console.log('Error loading game data:', e);
+      if (__DEV__) console.log('Error loading game data:', e);
     }
   };
 
@@ -40,7 +40,7 @@ export function GameProvider({ children }) {
     try {
       await AsyncStorage.setItem('totalStars', newTotal.toString());
     } catch (e) {
-      console.log('Error saving stars:', e);
+      if (__DEV__) console.log('Error saving stars:', e);
     }
   };
 
@@ -50,7 +50,7 @@ export function GameProvider({ children }) {
     try {
       await AsyncStorage.setItem('totalScore', newTotal.toString());
     } catch (e) {
-      console.log('Error saving score:', e);
+      if (__DEV__) console.log('Error saving score:', e);
     }
   };
 
@@ -59,7 +59,7 @@ export function GameProvider({ children }) {
     try {
       await AsyncStorage.setItem('soundEnabled', enabled.toString());
     } catch (e) {
-      console.log('Error saving sound setting:', e);
+      if (__DEV__) console.log('Error saving sound setting:', e);
     }
   };
 
@@ -68,7 +68,7 @@ export function GameProvider({ children }) {
     try {
       await AsyncStorage.setItem('musicEnabled', enabled.toString());
     } catch (e) {
-      console.log('Error saving music setting:', e);
+      if (__DEV__) console.log('Error saving music setting:', e);
     }
   };
 
@@ -77,7 +77,7 @@ export function GameProvider({ children }) {
     try {
       await AsyncStorage.setItem('voiceEnabled', enabled.toString());
     } catch (e) {
-      console.log('Error saving voice setting:', e);
+      if (__DEV__) console.log('Error saving voice setting:', e);
     }
   };
 
@@ -87,7 +87,7 @@ export function GameProvider({ children }) {
     try {
       await AsyncStorage.multiRemove(['totalStars', 'totalScore']);
     } catch (e) {
-      console.log('Error resetting progress:', e);
+      if (__DEV__) console.log('Error resetting progress:', e);
     }
   };
 

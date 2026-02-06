@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
 import { CONTENT_TIERS, CURRENT_ACCESS, isGameUnlocked, hasFeature } from '../config/content';
 
 const PremiumContext = createContext();
@@ -33,7 +34,7 @@ export function PremiumProvider({ children }) {
       setIsPremium(true);
       setAccessLevel('PREMIUM');
     } catch (e) {
-      console.log('Error loading premium status:', e);
+      if (__DEV__) console.log('Error loading premium status:', e);
     } finally {
       setIsLoading(false);
     }
@@ -42,15 +43,22 @@ export function PremiumProvider({ children }) {
   // Placeholder for future purchase flow
   const purchasePremium = async () => {
     // TODO: Implement with expo-in-app-purchases
-    // For now, just set premium (already true)
-    console.log('Purchase flow would start here');
+    Alert.alert(
+      'All Content Free!',
+      'All content is currently free during our launch period. Enjoy!',
+      [{ text: 'OK' }]
+    );
     return { success: true, message: 'All content is free during launch!' };
   };
 
   // Placeholder for restore purchases
   const restorePurchases = async () => {
     // TODO: Implement with expo-in-app-purchases
-    console.log('Restore purchases would happen here');
+    Alert.alert(
+      'Restore Complete',
+      'All content is currently free during our launch period. Nothing to restore!',
+      [{ text: 'OK' }]
+    );
     return { success: true, message: 'All content is free during launch!' };
   };
 
